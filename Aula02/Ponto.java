@@ -25,4 +25,8 @@ class Ponto {
   x += dx;
   y += dy;
  }
+
+ void mover(float c){
+  this.mover(c,c);
+ }
 }
