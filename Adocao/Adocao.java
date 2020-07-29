@@ -2,10 +2,17 @@ public class Adocao {
   private Pet pet;
   private Usuario usuario;
   private boolean voltou;
+  private Endereco endereco;
 
   Adocao(Usuario usuario, Pet pet) {
     this.setUsuario(usuario);
     this.setPet(pet);
+  }
+
+  Adocao(Usuario usuario, Pet pet, Endereco endereco) {
+    this.setUsuario(usuario);
+    this.setPet(pet);
+    this.setEndereco(endereco);
   }
 
   void setPet(Pet pet) {
@@ -30,5 +37,13 @@ public class Adocao {
 
   boolean getVoltou() {
     return this.voltou;
+  }
+
+  void setEndereco(Endereco endereco) {
+    this.endereco = endereco;
+  }
+
+  Endereco getEndereco() {
+    return this.endereco;
   }
 }
