@@ -34,7 +34,7 @@ class Conjunto {
     int ultimoElemento = this.getUltimoElemento();
     int[] elementos = this.getElementos();
 
-    this.checkExists(elemento);
+
 
     if (ultimoElemento >= elementos.length) {
       int[] elementosAumentado = new int[elementos.length * 2];
@@ -58,20 +58,39 @@ class Conjunto {
     return arr1;
   }
 
-  void checkExists(int elemento) {
-    for (int i = 0; i < this.elementos.length; i++) {  
+  void troca(int i, int j) {
+    int aux = this.elementos[i];
+    this.elementos[i] = this.elementos[j];
+    this.elementos[j] = aux;
+  }
+
+  void remove(int elemento) {
+    for (int i = 0; i < this.ultimoElemento; i++) {  
       if (this.elementos[i] == elemento) {
-        throw new IllegalArgumentException("Elemento já existe no conjunto");
+        this.elementos[i] = this.elementos[this.ultimoElemento - 1];
+        this.ultimoElemento = this.ultimoElemento - 1;
+
+        return;
       }  
     }
+  }
+
+  boolean checkExists(int elemento) {
+    for (int i = 0; i < this.getUltimoElemento(); i++) {  
+      if (this.elementos[i] == elemento) {
+        return true;
+      }  
+    }
+
+    return false;
   }
 
   boolean checkIsSubConjunto(Conjunto conjuntoB) {
     int[] elementosConjuntoB = conjuntoB.getElementos();
     boolean isSubconjunto = false;
 
-    for (int i = 0; i < elementosConjuntoB.length; i++) {
-      for (int j = 0; j < this.elementos.length; j++) {
+    for (int i = 0; i < conjuntoB.getUltimoElemento(); i++) {
+      for (int j = 0; j < this.getUltimoElemento(); j++) {
         if (elementosConjuntoB[i] == this.elementos[j]) {
           isSubconjunto = true;
         }
@@ -85,5 +104,25 @@ class Conjunto {
     }
 
     return true;
+  }
+
+  Conjunto uniaoConjunto(Conjunto conjuntoB) {
+    Conjunto conjuntoC = new Conjunto();
+
+    for (int i = 0; i < this.getUltimoElemento(); i++) {
+      conjuntoB.remove(this.elementos[i]);
+
+      System.out.print("Aqui: ");
+      System.out.print("\n");
+      conjuntoB.printElementos();
+
+      conjuntoC.push(this.elementos[i]);
+    }
+
+    for (int i = 0; i < conjuntoB.getUltimoElemento(); i++) {
+      conjuntoC.push(conjuntoB.getElementos()[i]);
+    }
+
+    return conjuntoC;
   }
 }
