@@ -22,6 +22,8 @@ class Main {
     conjuntoA.printElementos();
     conjuntoA.push(10);
     conjuntoA.printElementos();
+    conjuntoA.push(14);
+    conjuntoA.printElementos();
     conjuntoA.push(11);
     conjuntoA.printElementos();
     conjuntoA.push(12);
@@ -30,28 +32,15 @@ class Main {
     Conjunto conjuntoB = new Conjunto();
     conjuntoB.push(13);
     conjuntoB.printElementos();
+    conjuntoB.push(7);
+    conjuntoB.printElementos();
     conjuntoB.push(14);
     conjuntoB.printElementos();
     conjuntoB.push(15);
     conjuntoB.printElementos();
-    conjuntoB.push(3);
-    conjuntoB.printElementos();
 
-    conjuntoB.remove(3);
-    conjuntoB.printElementos();
-
-    conjuntoB.remove(14);
-    conjuntoB.printElementos();
-
-    conjuntoA.remove(6);
-    conjuntoA.printElementos();
-
-    conjuntoA.remove(4);
-    conjuntoA.printElementos();
-
-    conjuntoA.remove(9);
-    conjuntoA.printElementos();
-
+    Conjunto conjuntoC = conjuntoA.uniaoConjunto(conjuntoB);
+    conjuntoC.printElementos();
   }
 }
 

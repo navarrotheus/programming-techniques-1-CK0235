@@ -34,7 +34,9 @@ class Conjunto {
     int ultimoElemento = this.getUltimoElemento();
     int[] elementos = this.getElementos();
 
-
+    if (this.checkExists(elemento)) {
+      throw new IllegalArgumentException("Elemento já existe no conjunto");
+    } 
 
     if (ultimoElemento >= elementos.length) {
       int[] elementosAumentado = new int[elementos.length * 2];
@@ -111,10 +113,6 @@ class Conjunto {
 
     for (int i = 0; i < this.getUltimoElemento(); i++) {
       conjuntoB.remove(this.elementos[i]);
-
-      System.out.print("Aqui: ");
-      System.out.print("\n");
-      conjuntoB.printElementos();
 
       conjuntoC.push(this.elementos[i]);
     }
