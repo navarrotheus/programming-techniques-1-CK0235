@@ -123,4 +123,20 @@ class Conjunto {
 
     return conjuntoC;
   }
+
+  Conjunto interseccaoConjunto(Conjunto conjuntoB) {
+    Conjunto conjuntoC = new Conjunto();
+    int[] elementosB = conjuntoB.getElementos();
+
+    for (int i = 0; i < this.getUltimoElemento(); i++) {
+      System.out.print(elementosB[i]);
+      System.out.print(this.checkExists(elementosB[i]));
+      System.out.print("\n");
+
+      if(this.checkExists(elementosB[i])) {
+        conjuntoC.push(elementosB[i]);
+      }
+    }
+    return conjuntoC;
+  }
 }

@@ -37,10 +37,16 @@ class Main {
     conjuntoB.push(14);
     conjuntoB.printElementos();
     conjuntoB.push(15);
+
+    conjuntoB.printElementos();
+    Conjunto conjuntoC = conjuntoA.uniaoConjunto(conjuntoB);
     conjuntoB.printElementos();
 
-    Conjunto conjuntoC = conjuntoA.uniaoConjunto(conjuntoB);
-    conjuntoC.printElementos();
+    Conjunto conjuntoD = conjuntoA.interseccaoConjunto(conjuntoB);
+    conjuntoD.printElementos();
+
+    // Conjunto conjuntoE = conjuntoA.diferencaConjunto(conjuntoB);
+    // conjuntoE.printElementos();
   }
 }
 
