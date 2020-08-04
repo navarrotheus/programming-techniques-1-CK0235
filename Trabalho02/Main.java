@@ -3,47 +3,42 @@ class Main {
     Conjunto conjuntoA = new Conjunto();
 
     conjuntoA.push(1);
-    conjuntoA.printElementos();
     conjuntoA.push(2);
-    conjuntoA.printElementos();
     conjuntoA.push(3);
-    conjuntoA.printElementos();
     conjuntoA.push(4);
-    conjuntoA.printElementos();
     conjuntoA.push(5);
-    conjuntoA.printElementos();
     conjuntoA.push(6);
-    conjuntoA.printElementos();
     conjuntoA.push(7);
-    conjuntoA.printElementos();
     conjuntoA.push(8);
-    conjuntoA.printElementos();
     conjuntoA.push(9);
-    conjuntoA.printElementos();
     conjuntoA.push(10);
-    conjuntoA.printElementos();
-    conjuntoA.push(14);
-    conjuntoA.printElementos();
     conjuntoA.push(11);
-    conjuntoA.printElementos();
     conjuntoA.push(12);
+    conjuntoA.push(14);
+
+    System.out.print("Conjunto A: \n");
     conjuntoA.printElementos();
+    System.out.print("\n");
 
     Conjunto conjuntoB = new Conjunto();
     conjuntoB.push(13);
-    conjuntoB.printElementos();
-    conjuntoB.push(7);
-    conjuntoB.printElementos();
     conjuntoB.push(14);
-    conjuntoB.printElementos();
     conjuntoB.push(15);
+    conjuntoB.push(7);
+    System.out.print("Conjunto B: \n");
+    conjuntoB.printElementos();
+    System.out.print("\n");
 
-    conjuntoB.printElementos();
     Conjunto conjuntoC = conjuntoA.uniaoConjunto(conjuntoB);
-    conjuntoB.printElementos();
+    System.out.print("Uniao A com B: \n");
+    conjuntoC.printElementos();
+    System.out.print("\n");
 
     Conjunto conjuntoD = conjuntoA.interseccaoConjunto(conjuntoB);
+    System.out.print("Intersecao A com B: \n");
     conjuntoD.printElementos();
+    System.out.print("\n");
+
 
     // Conjunto conjuntoE = conjuntoA.diferencaConjunto(conjuntoB);
     // conjuntoE.printElementos();

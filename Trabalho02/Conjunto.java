@@ -110,15 +110,16 @@ class Conjunto {
 
   Conjunto uniaoConjunto(Conjunto conjuntoB) {
     Conjunto conjuntoC = new Conjunto();
+    Conjunto copiaConjuntoB = this.copiaConjunto(conjuntoB);
 
     for (int i = 0; i < this.getUltimoElemento(); i++) {
-      conjuntoB.remove(this.elementos[i]);
+      copiaConjuntoB.remove(this.elementos[i]);
 
       conjuntoC.push(this.elementos[i]);
     }
 
-    for (int i = 0; i < conjuntoB.getUltimoElemento(); i++) {
-      conjuntoC.push(conjuntoB.getElementos()[i]);
+    for (int i = 0; i < copiaConjuntoB.getUltimoElemento(); i++) {
+      conjuntoC.push(copiaConjuntoB.getElementos()[i]);
     }
 
     return conjuntoC;
@@ -126,17 +127,25 @@ class Conjunto {
 
   Conjunto interseccaoConjunto(Conjunto conjuntoB) {
     Conjunto conjuntoC = new Conjunto();
-    int[] elementosB = conjuntoB.getElementos();
+
+    Conjunto copiaConjuntoB = this.copiaConjunto(conjuntoB);
+    int[] elementosB = copiaConjuntoB.getElementos();
 
     for (int i = 0; i < this.getUltimoElemento(); i++) {
-      System.out.print(elementosB[i]);
-      System.out.print(this.checkExists(elementosB[i]));
-      System.out.print("\n");
-
       if(this.checkExists(elementosB[i])) {
         conjuntoC.push(elementosB[i]);
       }
     }
     return conjuntoC;
+  }
+
+  Conjunto copiaConjunto(Conjunto conjunto) {
+    Conjunto copia = new Conjunto();
+
+    for (int i = 0; i < conjunto.getUltimoElemento(); i++) {
+      copia.push(conjunto.getElementos()[i]);
+    }
+
+    return copia;
   }
 }
