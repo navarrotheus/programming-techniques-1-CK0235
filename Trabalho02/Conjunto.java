@@ -1,17 +1,17 @@
 class Conjunto {
-  private int[] elementos;
+  private double[] elementos;
   private int ultimoElemento;
 
   Conjunto(){
-    this.setElementos(new int[50]);
+    this.setElementos(new double[50]);
     this.setUltimoElemento(0);
   }
 
-  void setElementos(int[] elementos) {
+  void setElementos(double[] elementos) {
     this.elementos = elementos;
   }
 
-  int[] getElementos() {
+  double[] getElementos() {
     return this.elementos;
   }
 
@@ -25,21 +25,21 @@ class Conjunto {
 
   void printElementos() {
     for (int i = 0; i < ultimoElemento; i++) {  
-      System.out.print(this.elementos[i] + " ");  
+      System.out.print((int)this.elementos[i] + " ");  
     }
     System.out.print("\n");
   }
 
-  void push(int elemento) {
+  void push(double elemento) {
     int ultimoElemento = this.getUltimoElemento();
-    int[] elementos = this.getElementos();
+    double[] elementos = this.getElementos();
 
     if (this.checkExists(elemento)) {
-      throw new IllegalArgumentException("Elemento já existe no conjunto");
+      return;
     } 
 
     if (ultimoElemento >= elementos.length) {
-      int[] elementosAumentado = new int[elementos.length * 2];
+      double[] elementosAumentado = new double[elementos.length * 2];
       this.elementos = this.copyElements(elementosAumentado, elementos);
     }
 
@@ -48,7 +48,7 @@ class Conjunto {
   }
 
   // Copiar arr2 para arr1
-  private int[] copyElements(int[] arr1, int[] arr2) {
+  private double[] copyElements(double[] arr1, double[] arr2) {
     if (arr1.length < arr2.length) {
       throw new IllegalArgumentException("Arr1 < arr2");
     }
@@ -61,12 +61,12 @@ class Conjunto {
   }
 
   void troca(int i, int j) {
-    int aux = this.elementos[i];
+    double aux = this.elementos[i];
     this.elementos[i] = this.elementos[j];
     this.elementos[j] = aux;
   }
 
-  void remove(int elemento) {
+  void remove(double elemento) {
     for (int i = 0; i < this.ultimoElemento; i++) {  
       if (this.elementos[i] == elemento) {
         this.elementos[i] = this.elementos[this.ultimoElemento - 1];
@@ -77,7 +77,7 @@ class Conjunto {
     }
   }
 
-  boolean checkExists(int elemento) {
+  boolean checkExists(double elemento) {
     for (int i = 0; i < this.getUltimoElemento(); i++) {  
       if (this.elementos[i] == elemento) {
         return true;
@@ -88,7 +88,7 @@ class Conjunto {
   }
 
   boolean checkIsSubConjunto(Conjunto conjuntoB) {
-    int[] elementosConjuntoB = conjuntoB.getElementos();
+    double[] elementosConjuntoB = conjuntoB.getElementos();
     boolean isSubconjunto = false;
 
     for (int i = 0; i < conjuntoB.getUltimoElemento(); i++) {
@@ -129,11 +129,25 @@ class Conjunto {
     Conjunto conjuntoC = new Conjunto();
 
     Conjunto copiaConjuntoB = this.copiaConjunto(conjuntoB);
-    int[] elementosB = copiaConjuntoB.getElementos();
+    double[] elementosB = copiaConjuntoB.getElementos();
 
     for (int i = 0; i < this.getUltimoElemento(); i++) {
       if(this.checkExists(elementosB[i])) {
         conjuntoC.push(elementosB[i]);
+      }
+    }
+    return conjuntoC;
+  }
+
+  Conjunto diferencaConjunto(Conjunto conjuntoB) {
+    Conjunto conjuntoC = new Conjunto();
+
+    Conjunto copiaConjuntoB = this.copiaConjunto(conjuntoB);
+    double[] elementosB = copiaConjuntoB.getElementos();
+
+    for (int i = 0; i < this.getUltimoElemento(); i++) {
+      if(!copiaConjuntoB.checkExists(this.elementos[i])) {
+        conjuntoC.push(this.elementos[i]);
       }
     }
     return conjuntoC;
