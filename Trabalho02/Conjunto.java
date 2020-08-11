@@ -1,17 +1,17 @@
-class Conjunto {
-  private double[] elementos;
+class Conjunto<T> {
+  private Object[] elementos;
   private int ultimoElemento;
 
   Conjunto(){
-    this.setElementos(new double[50]);
+    this.setElementos(new Object[50]);
     this.setUltimoElemento(0);
   }
 
-  void setElementos(double[] elementos) {
+  void setElementos(Object[] elementos) {
     this.elementos = elementos;
   }
 
-  double[] getElementos() {
+  Object[] getElementos() {
     return this.elementos;
   }
 
@@ -25,21 +25,21 @@ class Conjunto {
 
   void printElementos() {
     for (int i = 0; i < ultimoElemento; i++) {  
-      System.out.print((int)this.elementos[i] + " ");  
+      System.out.print(this.elementos[i] + " ");  
     }
     System.out.print("\n");
   }
 
-  void push(double elemento) {
+  void push(T elemento) {
     int ultimoElemento = this.getUltimoElemento();
-    double[] elementos = this.getElementos();
+    Object[] elementos = this.getElementos();
 
     if (this.checkExists(elemento)) {
       return;
     } 
 
     if (ultimoElemento >= elementos.length) {
-      double[] elementosAumentado = new double[elementos.length * 2];
+      Object[] elementosAumentado = new Object[elementos.length * 2];
       this.elementos = this.copyElements(elementosAumentado, elementos);
     }
 
@@ -48,7 +48,7 @@ class Conjunto {
   }
 
   // Copiar arr2 para arr1
-  private double[] copyElements(double[] arr1, double[] arr2) {
+  private Object[] copyElements(Object[] arr1, Object[] arr2) {
     if (arr1.length < arr2.length) {
       throw new IllegalArgumentException("Arr1 < arr2");
     }
@@ -61,12 +61,12 @@ class Conjunto {
   }
 
   void troca(int i, int j) {
-    double aux = this.elementos[i];
+    final T aux = (T)this.elementos[i];
     this.elementos[i] = this.elementos[j];
     this.elementos[j] = aux;
   }
 
-  void remove(double elemento) {
+  void remove(T elemento) {
     for (int i = 0; i < this.ultimoElemento; i++) {  
       if (this.elementos[i] == elemento) {
         this.elementos[i] = this.elementos[this.ultimoElemento - 1];
@@ -77,7 +77,7 @@ class Conjunto {
     }
   }
 
-  boolean checkExists(double elemento) {
+  boolean checkExists(T elemento) {
     for (int i = 0; i < this.getUltimoElemento(); i++) {  
       if (this.elementos[i] == elemento) {
         return true;
@@ -88,7 +88,7 @@ class Conjunto {
   }
 
   boolean checkIsSubConjunto(Conjunto conjuntoB) {
-    double[] elementosConjuntoB = conjuntoB.getElementos();
+    Object[] elementosConjuntoB = conjuntoB.getElementos();
     boolean isSubconjunto = false;
 
     for (int i = 0; i < conjuntoB.getUltimoElemento(); i++) {
@@ -129,10 +129,10 @@ class Conjunto {
     Conjunto conjuntoC = new Conjunto();
 
     Conjunto copiaConjuntoB = this.copiaConjunto(conjuntoB);
-    double[] elementosB = copiaConjuntoB.getElementos();
+    Object[] elementosB = copiaConjuntoB.getElementos();
 
     for (int i = 0; i < this.getUltimoElemento(); i++) {
-      if(this.checkExists(elementosB[i])) {
+      if(this.checkExists((T)elementosB[i])) {
         conjuntoC.push(elementosB[i]);
       }
     }
@@ -143,7 +143,7 @@ class Conjunto {
     Conjunto conjuntoC = new Conjunto();
 
     Conjunto copiaConjuntoB = this.copiaConjunto(conjuntoB);
-    double[] elementosB = copiaConjuntoB.getElementos();
+    Object[] elementosB = copiaConjuntoB.getElementos();
 
     for (int i = 0; i < this.getUltimoElemento(); i++) {
       if(!copiaConjuntoB.checkExists(this.elementos[i])) {
@@ -151,6 +151,20 @@ class Conjunto {
       }
     }
     return conjuntoC;
+  }
+
+  Conjunto produtoCartesiano(Conjunto conjuntoB) {
+    Conjunto produtoCartesiano = new Conjunto<Par>();
+
+    Conjunto copiaConjuntoB = this.copiaConjunto(conjuntoB);
+    Object[] elementosB = copiaConjuntoB.getElementos();
+
+    for (int i = 0; i < this.getUltimoElemento(); i++) {
+      for (int j = 0; j < copiaConjuntoB.getUltimoElemento(); j++) {
+        produtoCartesiano.push(new Par<T>((T)this.elementos[i], (T)elementosB[j]));
+      }
+    }
+    return produtoCartesiano;
   }
 
   Conjunto copiaConjunto(Conjunto conjunto) {

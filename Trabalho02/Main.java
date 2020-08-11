@@ -1,6 +1,6 @@
 class Main {
   public static void main (String args[]) {
-    Conjunto conjuntoA = new Conjunto();
+    Conjunto conjuntoA = new Conjunto<Integer>();
 
     conjuntoA.push(1);
     conjuntoA.push(2);
@@ -120,6 +120,24 @@ class Main {
     System.out.print("e. Qual diferença entre os conjuntos 1 e 2: \n");
     Conjunto diferenca1e2 = conjunto1.diferencaConjunto(conjunto2);
     diferenca1e2.printElementos();
+    System.out.print("\n");
+    
+    // Tipo string
+
+    Conjunto conjuntoString = new Conjunto<String>();
+
+    conjuntoString.push("a");
+    conjuntoString.push("b");
+    conjuntoString.push("c");
+
+    System.out.print("Conjunto String: \n");
+    conjuntoString.printElementos();
+    System.out.print("\n");
+
+    Conjunto produtoCartesiano1com2 = conjunto1.produtoCartesiano(conjunto2);
+    System.out.print("Produto cartesiano do conjunto 1 com conjunto 2: \n");
+    produtoCartesiano1com2.printElementos();
+    System.out.print("\n");
 
   }
 }
