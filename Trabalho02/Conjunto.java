@@ -171,15 +171,27 @@ class Conjunto<T> {
     Conjunto conjuntoPotencia = new Conjunto<Conjunto<T>>();
 
     conjuntoPotencia.push(new Conjunto<T>());
+    
+    Conjunto subConjuntoTodos = new Conjunto<T>();
 
     for (int i = 0; i < this.getUltimoElemento(); i++) {
-      Conjunto subConjunto = new Conjunto<T>();
-      for (int j = 0; j <= i; j++) {
-        subConjunto.push((T)this.elementos[j]);
-      }
+      Conjunto subConjuntoElemento = new Conjunto<T>();
+      subConjuntoElemento.push((T)this.elementos[i]);
+      conjuntoPotencia.push(subConjuntoElemento);
 
-      conjuntoPotencia.push(subConjunto);
+      subConjuntoTodos.push((T)this.elementos[i]);
+
+      for (int j = i; j < this.getUltimoElemento(); j++) {
+        Conjunto subConjuntoDupla = new Conjunto<T>();
+        subConjuntoDupla.push((T)this.elementos[i]);
+        subConjuntoDupla.push((T)this.elementos[j]);
+        conjuntoPotencia.push(subConjuntoDupla);
+      }
     }
+
+    conjuntoPotencia.push(subConjuntoTodos);
+
+
     return conjuntoPotencia;
   }
 

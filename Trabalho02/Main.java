@@ -139,10 +139,7 @@ class Main {
     conjuntoString.printElementos();
     System.out.print("\n");
 
-    Conjunto conjuntoPotenciaString = conjuntoString.conjuntoPotencia();
-    System.out.print("Conjunto potência do conjunto string: \n");
-    System.out.print(conjuntoPotenciaString.toString());
-    System.out.print("\n \n");
+    
 
     System.out.print("Lei de Morgan: \n");
     System.out.print("Conjunto A: \n");
@@ -248,6 +245,16 @@ class Main {
     System.out.print(conjuntoUCACB.toString());
     System.out.print("\n\n(3) == (4) ? " + conjuntoUCACB.equals(complementarIntersecAB));
     System.out.print("\n \n");
+
+    System.out.print("Conjunto String: \n");
+    System.out.print(conjuntoString.toString());
+    System.out.print("\n");
+
+    Conjunto conjuntoPotenciaString = conjuntoString.conjuntoPotencia();
+    System.out.print("Conjunto potência do conjunto string: \n");
+    System.out.print(conjuntoPotenciaString.toString());
+    System.out.print("\n \n");
+
 
   }
 }
