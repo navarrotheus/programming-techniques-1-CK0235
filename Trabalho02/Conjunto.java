@@ -68,7 +68,7 @@ class Conjunto<T> {
 
   void remove(T elemento) {
     for (int i = 0; i < this.ultimoElemento; i++) {  
-      if (this.elementos[i] == elemento) {
+      if (this.elementos[i].equals(elemento)) {
         this.elementos[i] = this.elementos[this.ultimoElemento - 1];
         this.ultimoElemento = this.ultimoElemento - 1;
 
@@ -79,7 +79,7 @@ class Conjunto<T> {
 
   boolean checkExists(T elemento) {
     for (int i = 0; i < this.getUltimoElemento(); i++) {  
-      if (this.elementos[i] == elemento) {
+      if (this.elementos[i].equals(elemento)) {
         return true;
       }  
     }
@@ -93,7 +93,7 @@ class Conjunto<T> {
 
     for (int i = 0; i < conjuntoB.getUltimoElemento(); i++) {
       for (int j = 0; j < this.getUltimoElemento(); j++) {
-        if (elementosConjuntoB[i] == this.elementos[j]) {
+        if (elementosConjuntoB[i].equals(this.elementos[j])) {
           isSubconjunto = true;
         }
       }
@@ -167,6 +167,22 @@ class Conjunto<T> {
     return produtoCartesiano;
   }
 
+  Conjunto conjuntoPotencia() {
+    Conjunto conjuntoPotencia = new Conjunto<Conjunto<T>>();
+
+    conjuntoPotencia.push(new Conjunto<T>());
+
+    for (int i = 0; i < this.getUltimoElemento(); i++) {
+      Conjunto subConjunto = new Conjunto<T>();
+      for (int j = 0; j <= i; j++) {
+        subConjunto.push((T)this.elementos[j]);
+      }
+
+      conjuntoPotencia.push(subConjunto);
+    }
+    return conjuntoPotencia;
+  }
+
   Conjunto copiaConjunto(Conjunto conjunto) {
     Conjunto copia = new Conjunto();
 
@@ -175,5 +191,52 @@ class Conjunto<T> {
     }
 
     return copia;
+  }
+
+  @Override
+  public String toString() {
+    String elementosString = "{ ";
+    int ultimoElemento = this.getUltimoElemento();
+
+    for (int i = 0; i < ultimoElemento - 1; i++) {
+      elementosString = elementosString + this.elementos[i] + ", " ;
+    }
+
+    if (ultimoElemento > 0) {
+      elementosString = elementosString + this.elementos[ultimoElemento - 1] + " }";
+    } else {
+      elementosString = elementosString + " }";
+    }
+
+    return elementosString;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (obj.getClass() != this.getClass()) {
+      return false;
+    }
+
+    if (obj == null) {
+      return false;
+    }
+
+    final Conjunto conjuntoB = (Conjunto) obj;
+
+    int ultimoElementoA = this.getUltimoElemento();
+    int ultimoElementoB = conjuntoB.getUltimoElemento();
+    Object[] elementosB = conjuntoB.getElementos();
+
+    if (ultimoElementoA != ultimoElementoB) {
+      return false;
+    }
+
+    for (int i = 0; i < ultimoElementoA; i++) {
+      if (!this.checkExists((T)elementosB[i])) {
+        return false;
+      }
+    }
+
+    return true;
   }
 }

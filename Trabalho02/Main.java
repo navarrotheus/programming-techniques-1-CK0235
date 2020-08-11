@@ -130,14 +130,124 @@ class Main {
     conjuntoString.push("b");
     conjuntoString.push("c");
 
-    System.out.print("Conjunto String: \n");
-    conjuntoString.printElementos();
-    System.out.print("\n");
-
     Conjunto produtoCartesiano1com2 = conjunto1.produtoCartesiano(conjunto2);
     System.out.print("Produto cartesiano do conjunto 1 com conjunto 2: \n");
     produtoCartesiano1com2.printElementos();
     System.out.print("\n");
+
+    System.out.print("Conjunto String: \n");
+    conjuntoString.printElementos();
+    System.out.print("\n");
+
+    Conjunto conjuntoPotenciaString = conjuntoString.conjuntoPotencia();
+    System.out.print("Conjunto potência do conjunto string: \n");
+    System.out.print(conjuntoPotenciaString.toString());
+    System.out.print("\n \n");
+
+    System.out.print("Lei de Morgan: \n");
+    System.out.print("Conjunto A: \n");
+    System.out.print(conjuntoA.toString());
+    System.out.print("\n \n");
+
+    System.out.print("Conjunto B: \n");
+    System.out.print(conjuntoB.toString());
+    System.out.print("\n \n");
+
+    System.out.print("Conjunto universo U: \n");
+    Conjunto conjuntoU = new Conjunto<Integer>();
+    conjuntoU.push(1);
+    conjuntoU.push(2);
+    conjuntoU.push(3);
+    conjuntoU.push(4);
+    conjuntoU.push(5);
+    conjuntoU.push(6);
+    conjuntoU.push(7);
+    conjuntoU.push(8);
+    conjuntoU.push(9);
+    conjuntoU.push(10);
+    conjuntoU.push(11);
+    conjuntoU.push(12);
+    conjuntoU.push(13);
+    conjuntoU.push(14);
+    conjuntoU.push(15);
+    conjuntoU.push(16);
+    conjuntoU.push(17);
+    conjuntoU.push(18);
+    conjuntoU.push(19);
+    conjuntoU.push(20);
+    conjuntoU.push(21);
+    conjuntoU.push(22);
+    conjuntoU.push(23);
+    conjuntoU.push(24);
+    conjuntoU.push(25);
+    conjuntoU.push(26);
+    conjuntoU.push(27);
+    conjuntoU.push(28);
+    conjuntoU.push(29);
+    conjuntoU.push(30);
+    conjuntoU.push(31);
+    conjuntoU.push(32);
+    conjuntoU.push(33);
+    conjuntoU.push(34);
+    conjuntoU.push(35);
+    conjuntoU.push(36);
+    conjuntoU.push(37);
+    conjuntoU.push(38);
+    conjuntoU.push(39);
+    conjuntoU.push(40);
+    conjuntoU.push(41);
+    conjuntoU.push(42);
+    conjuntoU.push(43);
+    conjuntoU.push(44);
+    conjuntoU.push(45);
+    conjuntoU.push(46);
+    conjuntoU.push(47);
+    conjuntoU.push(48);
+    conjuntoU.push(49);
+    conjuntoU.push(50);
+    System.out.print(conjuntoU.toString());
+    System.out.print("\n \n");
+
+    System.out.print("Complementar de A: \n");
+    Conjunto complementarA = conjuntoU.diferencaConjunto(conjuntoA);
+    System.out.print(complementarA.toString());
+    System.out.print("\n \n");
+
+    System.out.print("Complementar de B: \n");
+    Conjunto complementarB = conjuntoU.diferencaConjunto(conjuntoB);
+    System.out.print(complementarB.toString());
+    System.out.print("\n \n");
+
+    System.out.print("Uniao A com B: \n");
+    System.out.print(conjuntoC.toString());
+    System.out.print("\n \n");
+
+    System.out.print("(1) Complementar da uniao de A com B: \n");
+    Conjunto conjuntoCAB = conjuntoU.diferencaConjunto(conjuntoC);
+    System.out.print(conjuntoCAB.toString());
+    System.out.print("\n \n");
+
+    System.out.print("(2) Interseccao do Complementar de A com Complementar de B: \n");
+    Conjunto intersecCACB = complementarB.interseccaoConjunto(complementarA);
+    System.out.print(intersecCACB.toString());
+    System.out.print("\n \n");
+    System.out.print("(1) == (2) ? " + conjuntoCAB.equals(intersecCACB));
+    System.out.print("\n \n");
+
+    System.out.print("Interseccao A com B: \n");
+    System.out.print(conjuntoD.toString());
+    System.out.print("\n \n");
+
+    System.out.print("(3) Complementar da interseccao de A com B: \n");
+    Conjunto complementarIntersecAB = conjuntoU.diferencaConjunto(conjuntoD);
+    System.out.print(complementarIntersecAB.toString());
+    System.out.print("\n \n");
+
+    System.out.print("(4) Uniao do Complementar de A com Complementar de B: \n");
+    Conjunto conjuntoUCACB = complementarB.uniaoConjunto(complementarA);
+    System.out.print(conjuntoUCACB.toString());
+    System.out.print("\n\n(3) == (4) ? " + conjuntoUCACB.equals(complementarIntersecAB));
+    System.out.print("\n \n");
 
   }
 }
