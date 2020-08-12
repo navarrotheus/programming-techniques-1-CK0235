@@ -23,13 +23,6 @@ class Conjunto<T> {
     return this.ultimoElemento;
   }
 
-  void printElementos() {
-    for (int i = 0; i < ultimoElemento; i++) {  
-      System.out.print(this.elementos[i] + " ");  
-    }
-    System.out.print("\n");
-  }
-
   void push(T elemento) {
     int ultimoElemento = this.getUltimoElemento();
     Object[] elementos = this.getElementos();
