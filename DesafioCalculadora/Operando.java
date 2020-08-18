@@ -6,12 +6,7 @@ public class Operando {
 	}	
 
 	void setValor(int valor) {
-		// if (valor instanceof Integer || valor instanceof Float || valor instanceof Double) {
 		this.valor = valor;
-		// }
-		// else {
-		// 	System.out.println("Tipo fudido");
-		// }
 	}
 
 	void setValor(Operando o) {
