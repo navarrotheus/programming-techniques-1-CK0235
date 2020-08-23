@@ -1,24 +1,24 @@
 class Ponto {
-  float x, y;
+  double x, y;
 
-  Ponto(float x, float y) {
+  Ponto(double x, double y) {
     this.setX(x);
     this.setY(y);
   }
 
-  void setX(float x) {
+  void setX(double x) {
     this.x = x;
   }
   
-  float getX() {
+  double getX() {
     return this.x;
   } 
 
-  void setY(float y) {
+  void setY(double y) {
     this.y = y;
   } 
 
-  float getY() {
+  double getY() {
     return this.y;
   } 
 }

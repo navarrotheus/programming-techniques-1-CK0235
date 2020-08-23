@@ -1,17 +1,17 @@
 class Circulo extends Figura {
-  private float raio;
+  private double raio;
 
-  Circulo(float raio, Ponto origem) {
+  Circulo(double raio, Ponto origem) {
     super(origem);
     this.raio = raio;
   }
 
-  void mover(float dx, float dy) {
+  void mover(double dx, double dy) {
     this.origem.setX(dx); 
     this.origem.setY(dy);
   };
 
-  float calcularArea() {
+  double calcularArea() {
     return (this.raio * this.raio) * 3.14;
   }
 
