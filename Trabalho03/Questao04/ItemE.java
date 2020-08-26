@@ -49,63 +49,55 @@ class ItemE {
     }
    }
 
-  void printElements(Collection<String> colecao) {
-    Iterator iterator = colecao.iterator();
-
-    while(iterator.hasNext()) {
-      System.out.println(iterator.next());
-    }
-  }
-
   public static void main(String args[]) {
     String[] vetor = {"Elemento B", "Elemento A", "Elemento C", "Elemento C"};
 
     Set<String> hashSet = new HashSet<>();
     System.out.println("HashSet:");
     ItemE itemEHashSet = new ItemE(hashSet, vetor);
-    itemEHashSet.printElements(hashSet);
+    System.out.println(hashSet);
     itemEHashSet.verificar(hashSet);
     System.out.println("\n");
 
     Set<String> linkedHashSet = new LinkedHashSet<>();
     System.out.println("LinkedHashSet:");
     ItemE itemELinkedHashSet = new ItemE(linkedHashSet, vetor);
-    itemELinkedHashSet.printElements(linkedHashSet);
+    System.out.println(linkedHashSet);
     itemELinkedHashSet.verificar(linkedHashSet);
     System.out.println("\n");
 
     Set<String> treeSet = new TreeSet<>();
     System.out.println("TreeSet:");
     ItemE itemETreeSet = new ItemE(treeSet, vetor);
-    itemETreeSet.printElements(treeSet);
+    System.out.println(treeSet);
     itemETreeSet.verificar(treeSet);
     System.out.println("\n");
 
     List<String> arrayList = new ArrayList<>();
     System.out.println("ArrayList:");
     ItemE itemEArrayList = new ItemE(arrayList, vetor);
-    itemEArrayList.printElements(arrayList);
+    System.out.println(arrayList);
     itemEArrayList.verificar(arrayList);
     System.out.println("\n");
 
     List<String> vector = new Vector<>();
     System.out.println("Vector:");
     ItemE itemEVector = new ItemE(vector, vetor);
-    itemEVector.printElements(vector);
+    System.out.println(vector);
     itemEVector.verificar(vector);
     System.out.println("\n");
 
     List<String> linkedList = new LinkedList<>();
     System.out.println("LinkedList:");
     ItemE itemELinkedList = new ItemE(linkedList, vetor);
-    itemELinkedList.printElements(linkedList);
+    System.out.println(linkedList);
     itemELinkedList.verificar(linkedList);
     System.out.println("\n");
 
     Queue<String> priorityQueue = new PriorityQueue<>();
     System.out.println("PriorityQueue:");
     ItemE itemEPriorityQueue = new ItemE(priorityQueue, vetor);
-    itemEPriorityQueue.printElements(priorityQueue);
+    System.out.println(priorityQueue);
     itemEPriorityQueue.verificar(priorityQueue);
   }
 }
